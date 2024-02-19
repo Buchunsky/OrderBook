@@ -1,0 +1,40 @@
+﻿@using OrderBook.Models
+@using OrderBook.Models.OrderBook
+
+<div class="input-view-container">
+    <div class="input-view-row">
+        <h8 class="text">Enter amount of the btc you want to buy: </h8>
+        <input @oninput="CalculateFiatAmount" type="number" @bind="EnteredBtcAmount" min="0" step="0.01">
+    </div>
+    <div class="input-view-row">
+        <h8 class="text">Estimated eur amount: </h8>
+        <div class="fiat-amount">@CalculatedEstimatedFiatAmount</div>
+    </div>
+</div>
+
+@code{
+
+    [Parameter] 
+    public List<OrderBookRecordModel> Bids { get; set; }
+
+    public decimal EnteredBtcAmount { get; set; }
+    public decimal CalculatedEstimatedFiatAmount { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (EnteredBtcAmount > 0)
+        {
+            CalculateFiatAmount();
+        }
+
+        await base.OnParametersSetAsync();
+    }
+    
+    private void CalculateFiatAmount()
+    {
+        var closestBid = Bids.OrderBy(b => Math.Abs(b.CurrencyAmount - EnteredBtcAmount)).First();
+        CalculatedEstimatedFiatAmount = EnteredBtcAmount * closestBid.EurPrice;
+        StateHasChanged();
+    }
+
+}

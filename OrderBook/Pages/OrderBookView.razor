@@ -1,0 +1,74 @@
+﻿@using OrderBook.Services.Interfaces
+@using OrderBook.Models
+@using OrderBook.Models.OrderBook
+
+<div class="order-book">
+    <div class="order-book-container">
+        <div class="order-book-header">
+            <h8 class="title">Bids</h8>
+            <h8 class="title">Asks</h8>
+        </div>
+        <div class="order-book-body">
+            <div class="left-axis">
+                @foreach (var label in BidAxisLabels)
+                {
+                    <div class="axis-label">@label.ToString("F2")</div>
+                }
+            </div>
+            <div class="items bids">
+                @foreach (var bid in Bids)
+                {
+                    <div class="bid-bar" style="height: @(bid.CurrencyAmount / Bids.Max(x => x.CurrencyAmount) * 100)%;"></div>
+                    <div class="horizontal-line" style="bottom: @(bid.CurrencyAmount / Bids.Max(x => x.CurrencyAmount) * 100)%;"></div>
+                }
+            </div>
+            <div class="items asks">
+                @foreach (var ask in Asks)
+                {
+                    <div class="ask-bar" style="height: @(ask.CurrencyAmount / Asks.Max(x => x.CurrencyAmount) * 100)%;"></div>
+                    <div class="horizontal-line" style="bottom: @(ask.CurrencyAmount / Asks.Max(x => x.CurrencyAmount) * 100)%;"></div>
+                }
+            </div>
+            <div class="right-axis">
+                @foreach (var label in AskAxisLabels)
+                {
+                    <div class="axis-label">@label.ToString("F2")</div>
+                }
+            </div>
+        </div>
+        <div class="order-book-footer">
+            <div class="bottom-axis">
+                @foreach (var record in Bids.Concat(Asks).Where((value, index) => index % 2 == 0))
+                {
+                    <div>@(record.CurrencyAmount.ToString("F2"))</div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@code{
+
+    [Parameter] public List<OrderBookRecordModel> Bids { get; set; }
+
+    [Parameter] public List<OrderBookRecordModel> Asks { get; set; }
+
+
+    private decimal BidMin => Bids.Any() ? Bids.Min(b => b.EurPrice) : 0;
+    private decimal BidMax => Bids.Any() ? Bids.Max(b => b.EurPrice) : 0;
+    private decimal AskMin => Asks.Any() ? Asks.Min(a => a.EurPrice) : 0;
+    private decimal AskMax => Asks.Any() ? Asks.Max(a => a.EurPrice) : 0;
+
+    private IEnumerable<decimal> BidAxisLabels => GenerateFixedStepAxisLabels(BidMin, BidMax, 10);
+    private IEnumerable<decimal> AskAxisLabels => GenerateFixedStepAxisLabels(AskMin, AskMax, 10);
+
+    private IEnumerable<decimal> GenerateFixedStepAxisLabels(decimal min, decimal max, int count)
+    {
+        decimal step = (max - min) / (count - 1);
+        for (int i = 0; i < count; i++)
+        {
+            yield return min + step * i;
+        }
+    }
+
+}

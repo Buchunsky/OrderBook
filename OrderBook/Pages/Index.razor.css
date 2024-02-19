@@ -1,0 +1,22 @@
+﻿* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+
+    font-size: 16px;
+    line-height: 1.625;
+    font-family: Roboto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.view-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}

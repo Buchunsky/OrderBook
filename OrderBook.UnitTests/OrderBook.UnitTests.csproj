@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>12</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="bunit" Version="1.26.64" />
+      <PackageReference Include="bunit.core" Version="1.26.64" />
+      <PackageReference Include="bunit.web" Version="1.26.64" />
+      <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+      <PackageReference Include="Moq" Version="4.20.70" />
+      <PackageReference Include="NUnit" Version="4.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\OrderBook\OrderBook.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderBook", "OrderBook\OrderBook.csproj", "{F97654A4-80A5-4EC9-8BC3-E8E210307589}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderBook.IntegrationTests", "OrderBook.IntegrationTests\OrderBook.IntegrationTests.csproj", "{34459AA3-95FD-452A-8D4E-313461F741BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderBook.UnitTests", "OrderBook.UnitTests\OrderBook.UnitTests.csproj", "{3715FE83-9AD4-45BE-9DF1-095800B657D1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{260087F6-AE48-409E-917D-6F599D0A0ECC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F97654A4-80A5-4EC9-8BC3-E8E210307589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F97654A4-80A5-4EC9-8BC3-E8E210307589}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F97654A4-80A5-4EC9-8BC3-E8E210307589}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F97654A4-80A5-4EC9-8BC3-E8E210307589}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34459AA3-95FD-452A-8D4E-313461F741BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34459AA3-95FD-452A-8D4E-313461F741BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34459AA3-95FD-452A-8D4E-313461F741BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34459AA3-95FD-452A-8D4E-313461F741BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3715FE83-9AD4-45BE-9DF1-095800B657D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3715FE83-9AD4-45BE-9DF1-095800B657D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3715FE83-9AD4-45BE-9DF1-095800B657D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3715FE83-9AD4-45BE-9DF1-095800B657D1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3715FE83-9AD4-45BE-9DF1-095800B657D1} = {260087F6-AE48-409E-917D-6F599D0A0ECC}
+		{34459AA3-95FD-452A-8D4E-313461F741BC} = {260087F6-AE48-409E-917D-6F599D0A0ECC}
+	EndGlobalSection
+EndGlobal
